@@ -34,11 +34,11 @@ class TestCalculator(unittest.TestCase):
 
     def test_power(self):
         calc_value = self.calculator.value
-        self.assertEqual(self.calculator.power(4).value, calc_value ** 4)
+        self.assertEqual(self.calculator.power(4, 2).value, (calc_value ** 4) ** 2)
 
     def test_root(self):
         calc_value = self.calculator.value
-        self.assertEqual(self.calculator.root(2).value, calc_value ** (1/2))
+        self.assertEqual(self.calculator.root(2, 8).value, ((calc_value ** (1/2)) ** (1/8)))
 
     def test_kek1(self):
         calc_value = self.calculator.value
@@ -60,6 +60,13 @@ class TestCalculator(unittest.TestCase):
         self.assertAlmostEqual(self.calculator.multiply(11, 3, 5, 1).add(123.3456789, 9999.99999).power(2)
                                .root(123).value,
                                round(((calc_value * 11 * 3 * 5 * 1 + 123.3456789 + 9999.99999) ** 2) ** (1 / 123), 7))
+
+    def test_kek5(self):
+        calc_value = self.calculator.value
+        self.assertAlmostEqual(self.calculator.multiply(11, 3, 5, 1).add(123.3456789, 9999.99999).power(2)
+                               .root(123, 11).power(2, 2, 1).value,
+                               round(((((((calc_value * 11 * 3 * 5 * 1 + 123.3456789 + 9999.99999) ** 2)
+                                         ** (1 / 123)) ** (1 / 11)) ** 2) ** 2) ** 1, 7))
 
 
 if __name__ == '__main__':

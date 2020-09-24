@@ -23,12 +23,14 @@ class Calculator:
         self.value -= sum(args)
         return self
 
-    def power(self, exp):
-        self.value **= exp
+    def power(self, *exp):
+        for x in exp:
+            self.value **= x
         return self
 
-    def root(self, exp):
-        self.value **= (1 / exp)
+    def root(self, *exp):
+        for x in exp:
+            self.value **= (1 / x)
         return self
 
     def __repr__(self):
